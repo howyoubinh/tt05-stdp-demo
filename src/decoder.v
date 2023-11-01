@@ -40,5 +40,7 @@ module seg7 (
         endcase
     end
 
+    // Comment to test push
+
 endmodule
 
