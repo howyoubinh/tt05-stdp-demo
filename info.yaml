@@ -29,7 +29,7 @@ documentation:
   description:  "Update neuron weight using pre-synaptic and post-synaptic spikes"      # Short description of what your project does
 
 # Longer description of how the project works. You can use standard markdown format.
-  how_it_works:
+  how_it_works: |
       EDIT HERE
       Uses a set of registers to divide the clock, and then some combinational logic
       to convert from binary to decimal for the display.
@@ -44,7 +44,7 @@ documentation:
       With a 10MHz clock the counter will increment ~610 times per second.
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
-  how_to_test:
+  how_to_test: |
       EDIT HERE
       After reset, the counter should increase by one every second with a 10MHz input clock.
       Experiment by changing the inputs to change the counting speed.
