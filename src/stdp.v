@@ -8,7 +8,8 @@ module stdp(
     output wire      weight,
     output reg [7:0] state,
     output reg       spike_flag
-)
+    output wire [7:0]
+);
 
 // STDP parameters
 // parameter max_weight = 127; // Max Synaptic weight
