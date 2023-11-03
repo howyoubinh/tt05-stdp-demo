@@ -13,7 +13,7 @@ module tt_um_stdp (
 
 // use bidirectionals as outputs
 assign uio_oe = 8'b11111111;
-assign uio_out[4:0] = 4'd0;
+assign uio_out[6:0] = 6'd0;
 
 
 // stdp logic (including counter, stdp rule, and weight flag)

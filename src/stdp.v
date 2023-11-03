@@ -34,7 +34,7 @@ always @(posedge clk) begin
         update_w_flag <= 1'b0;
     end else begin
     time_diff <= post_spike_time - pre_spike_time; // assume pre comes before post (LTP)
-    update_w_flag = (time_diff > 0) ? 1'b1 : 1'b0; // if time_diff > 0, update_w_flag is true else false
+    update_w_flag <= (time_diff > 0) ? 1'b1 : 1'b0; // if time_diff > 0, update_w_flag is true else false
     end
 end
 
