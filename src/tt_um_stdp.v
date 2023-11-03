@@ -15,7 +15,8 @@ module tt_um_stdp (
 assign uio_oe = 8'b11111111;
 assign uio_out[6:0] = 6'd0;
 
-wire out1;
+wire spike_out1;
+wire state_out1;
 wire post_syn;
 
 assign post_syn = 1'b1;
@@ -25,7 +26,7 @@ assign post_syn = 1'b1;
 // stdp stdp1(.clk(clk), .rst_n(rst_n), .pre_spike(uio_out[7]), post_spike(uio_out[6]), .time_diff(), .update_w_flag(), .weight(uio_out[5]));
 
 // instantiate lif for presynaptic neuron
-lif lif1(.current(ui_in), .clk(clk), .rst_n(rst_n), .spike(out1), .state(uo_out));
+lif lif1(.current(ui_in), .clk(clk), .rst_n(rst_n), .spike(spike_out1), .state(state_out1));
 
 // test
 
