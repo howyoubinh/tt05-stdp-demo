@@ -42,8 +42,8 @@ lif lif2(.current(in2), .clk(clk), .rst_n(rst_n), .spike(spike_out2), .state(sta
 // assign uo_out = state_out1;
 
 // assign outputs wires to output to lif2
-assign uio_out[7] = spike_out2;
-assign uo_out = state_out2;
+assign spike_out2 = uio_out[7];
+assign state_out2 = uo_out;
 
 
 //post_syn = weight*spk = in2
