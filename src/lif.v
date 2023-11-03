@@ -1,26 +1,5 @@
 `default_nettype none
 
-// module stdp(
-//     input wire       clk,
-//     input wire       rst_n,
-//     input wire       pre_spike,
-//     input wire       post_spike,
-//     output wire      weight,
-//     output reg [7:0] state,
-//     output reg       spike_flag,
-//     output wire [7:0]counter
-// );
-
-//     always@(posedge clk) begin
-        
-//     end
-
-
-// endmodule
-
-
-// lif
-
 module lif (
     input wire [7:0] current,
     input wire       clk,
