@@ -20,7 +20,7 @@ wire in1, in2;
 
 // outs
 wire spike_out1, spike_out2;
-wire state_out1, state_out2;
+reg state_out1, state_out2;
 
 // assignments
 assign in1 = {ui_in[7:4], 4'b0};
