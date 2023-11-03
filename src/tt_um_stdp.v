@@ -15,18 +15,23 @@ module tt_um_stdp (
 assign uio_oe = 8'b11111111;
 assign uio_out[6:0] = 6'd0;
 
-wire spike_out1;
-wire state_out1;
-wire post_syn;
+// in
+wire in1, in2;
 
-assign post_syn = 1'b1;
+// outs
+wire spike_out1, spike_out2;
+wire state_out1, state_out2;
+
+// assignments
+assign in1 = {ui_in[7:4], 4'b0};
+assign in2 = {ui_in[3:0], 4'b0};
 
 
 // stdp logic (including counter, stdp rule, and weight flag)
 // stdp stdp1(.clk(clk), .rst_n(rst_n), .pre_spike(uio_out[7]), post_spike(uio_out[6]), .time_diff(), .update_w_flag(), .weight(uio_out[5]));
 
 // instantiate lif for presynaptic neuron
-lif lif1(.current(ui_in), .clk(clk), .rst_n(rst_n), .spike(spike_out1), .state(state_out1));
+lif lif1(.current(in1), .clk(clk), .rst_n(rst_n), .spike(spike_out1), .state(state_out1));
 
 // test
 
@@ -34,7 +39,7 @@ lif lif1(.current(ui_in), .clk(clk), .rst_n(rst_n), .spike(spike_out1), .state(s
 // instantiate lif for postsynaptic neuron
 // lif lif2(.current(ui_in), .clk(clk), .rst_n(rst_n), .spike(uio_out[6]), .state(uo_out));
 
-lif lif2(.current(ui_in), .clk(clk), .rst_n(rst_n), .spike(uio_out[7]), .state(uo_out));
+lif lif2(.current(in2), .clk(clk), .rst_n(rst_n), .spike(spike_out2), .state(state_out2));
 
 //post_syn = weight*spk
 // initial conditions:
