@@ -25,8 +25,8 @@ reg [7:0] state_out1, state_out2; // 8-bit output state
 // assignments
 assign in1 = {ui_in[7:4], 4'b0};
 assign in2 = {ui_in[3:0], 4'b0};
-assign spike_out2 = uio_out[7];
-assign state_out2 = uo_out;
+// assign spike_out2 = uio_out[7];
+// assign state_out2 = uo_out;
 
 
 // stdp logic (including counter, stdp rule, and weight flag)
@@ -39,12 +39,12 @@ lif lif1(.current(in1), .clk(clk), .rst_n(rst_n), .spike(spike_out1), .state(sta
 lif lif2(.current(in2), .clk(clk), .rst_n(rst_n), .spike(spike_out2), .state(state_out2));
 
 // assign output wire to lif1 output
-// assign uio_out = spike_out1;
+// assign uio_out[7] = spike_out1;
 // assign uo_out = state_out1;
 
 // assign outputs wires to output to lif2
-// assign spike_out2 = uio_out[7];
-// assign state_out2 = uo_out;
+assign  uio_out[7] = spike_out2;
+assign  uo_out = state_out2;
 
 
 //post_syn = weight*spk = in2
