@@ -16,17 +16,16 @@ assign uio_oe = 8'b11111111;
 assign uio_out[6:0] = 6'd0;
 
 // in
-wire in1, in2;
+wire [7:0] in1, in2; // 8-bit input wires
 
 // outs
-wire spike_out1, spike_out2;
-reg state_out1, state_out2;
+wire spike_out1, spike_out2; // 1-bit output spike
+reg [7:0] state_out1, state_out2; // 8-bit output state
 
 // assignments
-// assign in1 = {ui_in[7:4], 4'b0};
-// assign in2 = {ui_in[3:0], 4'b0};
+assign in1 = {ui_in[7:4], 4'b0};
+assign in2 = {ui_in[3:0], 4'b0};
 
-assign in1 = ui_in;
 
 // stdp logic (including counter, stdp rule, and weight flag)
 // stdp stdp1(.clk(clk), .rst_n(rst_n), .pre_spike(uio_out[7]), post_spike(uio_out[6]), .time_diff(), .update_w_flag(), .weight(uio_out[5]));
