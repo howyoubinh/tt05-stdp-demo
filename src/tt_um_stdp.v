@@ -33,7 +33,7 @@ lif lif1(.current(ui_in), .clk(clk), .rst_n(rst_n), .spike(out1), .state(uo_out)
 // instantiate lif for postsynaptic neuron
 // lif lif2(.current(ui_in), .clk(clk), .rst_n(rst_n), .spike(uio_out[6]), .state(uo_out));
 
-lif lif2(.current(post_syn), .clk(clk), .rst_n(rst_n), .spike(uio_out[7]), .state(uo_out));
+// lif lif2(.current(post_syn), .clk(clk), .rst_n(rst_n), .spike(uio_out[7]), .state(uo_out));
 
 //post_syn = weight*spk
 // initial conditions:
