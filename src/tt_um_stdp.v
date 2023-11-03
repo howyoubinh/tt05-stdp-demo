@@ -21,16 +21,16 @@ wire [7:0] in1, in2; // 8-bit input wires
 // outs
 wire spike_out1, spike_out2; // 1-bit output spike
 reg [7:0] state_out1, state_out2; // 8-bit output state
+wire [7:0] time_diff_out, weight_out;
+wire w_flag_out;
 
 // assignments
 assign in1 = {ui_in[7:4], 4'b0};
 assign in2 = {ui_in[3:0], 4'b0};
-// assign spike_out2 = uio_out[7];
-// assign state_out2 = uo_out;
-
 
 // stdp logic (including counter, stdp rule, and weight flag)
 // stdp stdp1(.clk(clk), .rst_n(rst_n), .pre_spike(uio_out[7]), post_spike(uio_out[6]), .time_diff(), .update_w_flag(), .weight(uio_out[5]));
+stdp stdp1(.clk(clk), .rst_n(rst_n), .pre_spike(spike_out1), post_spike(spike_out2), .time_diff(time_diff_out), .update_w_flag(w_flag_out), .weight(weight_out));
 
 // instantiate lif for presynaptic neuron
 lif lif1(.current(in1), .clk(clk), .rst_n(rst_n), .spike(spike_out1), .state(state_out1));
@@ -38,22 +38,13 @@ lif lif1(.current(in1), .clk(clk), .rst_n(rst_n), .spike(spike_out1), .state(sta
 // instantiate lif for postsynaptic neuron
 lif lif2(.current(in2), .clk(clk), .rst_n(rst_n), .spike(spike_out2), .state(state_out2));
 
-// assign output wire to lif1 output
-// assign uio_out[7] = spike_out1;
-// assign uo_out = state_out1;
-
-// assign outputs wires to output to lif2
-assign  uio_out[7] = spike_out2;
-assign  uo_out = state_out2;
-
-
 //post_syn = weight*spk = in2
 // initial conditions:
 //  - weight = 1
 //  - spk = 0
 
-// 2-4-8-16
-// 16-8-4-2
-
+// assign outputs wires to output to lif2
+assign  uio_out[7] = spike_out2;
+assign  uo_out = state_out2;
 
 endmodule
