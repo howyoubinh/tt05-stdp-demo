@@ -33,17 +33,17 @@ assign in2 = {ui_in[3:0], 4'b0};
 lif lif1(.current(in1), .clk(clk), .rst_n(rst_n), .spike(spike_out1), .state(state_out1));
 
 // instantiate lif for postsynaptic neuron
-// lif lif2(.current(ui_in), .clk(clk), .rst_n(rst_n), .spike(uio_out[6]), .state(uo_out));
+lif lif2(.current(ui_in), .clk(clk), .rst_n(rst_n), .spike(uio_out[6]), .state(uo_out));
 
-lif lif2(.current(in2), .clk(clk), .rst_n(rst_n), .spike(spike_out2), .state(state_out2));
+// lif lif2(.current(in2), .clk(clk), .rst_n(rst_n), .spike(spike_out2), .state(state_out2));
 
 // assign output wire to lif1 output
 // assign uio_out = spike_out1;
 // assign uo_out = state_out1;
 
 // assign outputs wires to output to lif2
-assign spike_out2 = uio_out[7];
-assign state_out2 = uo_out;
+// assign spike_out2 = uio_out[7];
+// assign state_out2 = uo_out;
 
 
 //post_syn = weight*spk = in2
