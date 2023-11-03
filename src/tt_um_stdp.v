@@ -25,8 +25,8 @@ wire state_out1, state_out2;
 // assignments
 assign in1 = {ui_in[7:4], 4'b0};
 assign in2 = {ui_in[3:0], 4'b0};
-assign spike_out1 = uio_out[7];
-assign spike_out2 = uio_out[6];
+// assign spike_out1 = uio_out[7];
+// assign spike_out2 = uio_out[6];
 
 
 // stdp logic (including counter, stdp rule, and weight flag)
