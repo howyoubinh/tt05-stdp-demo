@@ -13,7 +13,7 @@ module tt_um_stdp (
 
 // use bidirectionals as outputs
 assign uio_oe = 8'b11111111;
-assign uio_out[6:0] = 6'd0;
+assign uio_out[5:0] = 5'd0;
 
 // in
 wire in1, in2;
@@ -25,6 +25,10 @@ wire state_out1, state_out2;
 // assignments
 assign in1 = {ui_in[7:4], 4'b0};
 assign in2 = {ui_in[3:0], 4'b0};
+assign spike_out1 = uio_out[7];
+assign spike_out2 = uio_out[6];
+assign state_out1 = {uo_out[7:4], 4'b0};
+assign state_out1 = {uo_out[3:0], 4'b0};
 
 
 // stdp logic (including counter, stdp rule, and weight flag)
@@ -32,9 +36,6 @@ assign in2 = {ui_in[3:0], 4'b0};
 
 // instantiate lif for presynaptic neuron
 lif lif1(.current(in1), .clk(clk), .rst_n(rst_n), .spike(spike_out1), .state(state_out1));
-
-// test
-
 
 // instantiate lif for postsynaptic neuron
 // lif lif2(.current(ui_in), .clk(clk), .rst_n(rst_n), .spike(uio_out[6]), .state(uo_out));
