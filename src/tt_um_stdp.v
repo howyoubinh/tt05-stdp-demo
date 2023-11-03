@@ -23,14 +23,14 @@ wire spike_out1, spike_out2;
 reg state_out1, state_out2;
 
 // assignments
-assign in1 = {ui_in[7:4], 4'b0};
-assign in2 = {ui_in[3:0], 4'b0};
+// assign in1 = {ui_in[7:4], 4'b0};
+// assign in2 = {ui_in[3:0], 4'b0};
 
 // stdp logic (including counter, stdp rule, and weight flag)
 // stdp stdp1(.clk(clk), .rst_n(rst_n), .pre_spike(uio_out[7]), post_spike(uio_out[6]), .time_diff(), .update_w_flag(), .weight(uio_out[5]));
 
 // instantiate lif for presynaptic neuron
-lif lif1(.current(in1), .clk(clk), .rst_n(rst_n), .spike(spike_out1), .state(state_out1));
+// lif lif1(.current(in1), .clk(clk), .rst_n(rst_n), .spike(spike_out1), .state(state_out1));
 
 // instantiate lif for postsynaptic neuron
 lif lif2(.current(ui_in), .clk(clk), .rst_n(rst_n), .spike(uio_out[6]), .state(uo_out));
