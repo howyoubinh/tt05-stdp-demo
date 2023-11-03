@@ -40,7 +40,10 @@ lif lif1(.current(in1), .clk(clk), .rst_n(rst_n), .spike(spike_out1), .state(sta
 
 lif lif2(.current(in2), .clk(clk), .rst_n(rst_n), .spike(spike_out2), .state(state_out2));
 
+// assign outputs wires to output to lif2
+assign uio_out = spike_out2;
 assign uo_out = state_out2;
+
 
 //post_syn = weight*spk = in2
 // initial conditions:
