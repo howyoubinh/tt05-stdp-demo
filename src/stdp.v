@@ -44,8 +44,8 @@ always @(posedge clk) begin
         weight_local <= 8'b1;
     end else begin
         case (update_w_flag)
-            1'b1: weight_local <= (weight_local << 1) // weight * 2
-            1'b0: weight_local <= (weight_local >> 1) // weight / 2
+            1'b1: weight_local <= (weight_local << 1); // weight * 2
+            1'b0: weight_local <= (weight_local >> 1); // weight / 2
         endcase
     end
 end
