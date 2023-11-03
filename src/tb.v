@@ -23,10 +23,17 @@ module tb ();
     reg  [7:0] ui_in;
     reg  [7:0] uio_in;
 
-    wire [6:0] segments = uo_out[6:0];
+    // wire [6:0] segments = uo_out[6:0];
+    // wire [7:0] uo_out;
+    // wire [7:0] uio_out;
+    // wire [7:0] uio_oe;
+
     wire [7:0] uo_out;
     wire [7:0] uio_out;
     wire [7:0] uio_oe;
+
+    wire [7:0] state = uo_out[7:0];
+    wire       spike = uio_out [7];
 
     tt_um_stdp tt_um_stdp (
         .ui_in      (ui_in),    // Dedicated inputs
