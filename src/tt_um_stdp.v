@@ -13,7 +13,7 @@ module tt_um_stdp (
 
 // use bidirectionals as outputs
 assign uio_oe = 8'b11111111;
-assign uio_out[5:0] = 5'd0;
+assign uio_out[6:0] = 6'd0;
 
 // in
 wire in1, in2;
@@ -25,9 +25,6 @@ reg state_out1, state_out2;
 // assignments
 assign in1 = {ui_in[7:4], 4'b0};
 assign in2 = {ui_in[3:0], 4'b0};
-// assign spike_out1 = uio_out[7];
-// assign spike_out2 = uio_out[6];
-
 
 // stdp logic (including counter, stdp rule, and weight flag)
 // stdp stdp1(.clk(clk), .rst_n(rst_n), .pre_spike(uio_out[7]), post_spike(uio_out[6]), .time_diff(), .update_w_flag(), .weight(uio_out[5]));
@@ -40,8 +37,12 @@ lif lif1(.current(in1), .clk(clk), .rst_n(rst_n), .spike(spike_out1), .state(sta
 
 lif lif2(.current(in2), .clk(clk), .rst_n(rst_n), .spike(spike_out2), .state(state_out2));
 
+// assign output wire to lif1 output
+// assign uio_out = spike_out1;
+// assign uo_out = state_out1;
+
 // assign outputs wires to output to lif2
-assign uio_out = spike_out2;
+assign uio_out[7] = spike_out2;
 assign uo_out = state_out2;
 
 
