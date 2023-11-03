@@ -27,8 +27,6 @@ assign in1 = {ui_in[7:4], 4'b0};
 assign in2 = {ui_in[3:0], 4'b0};
 assign spike_out1 = uio_out[7];
 assign spike_out2 = uio_out[6];
-assign state_out1 = {uo_out[7:4], 4'b0};
-assign state_out2 = {uo_out[3:0], 4'b0};
 
 
 // stdp logic (including counter, stdp rule, and weight flag)
@@ -42,6 +40,8 @@ lif lif1(.current(in1), .clk(clk), .rst_n(rst_n), .spike(spike_out1), .state(sta
 
 lif lif2(.current(in2), .clk(clk), .rst_n(rst_n), .spike(spike_out2), .state(state_out2));
 
+assign uo_out = state_out2;
+
 //post_syn = weight*spk = in2
 // initial conditions:
 //  - weight = 1
@@ -49,5 +49,6 @@ lif lif2(.current(in2), .clk(clk), .rst_n(rst_n), .spike(spike_out2), .state(sta
 
 // 2-4-8-16
 // 16-8-4-2
+
 
 endmodule
