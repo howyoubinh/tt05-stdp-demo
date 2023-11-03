@@ -6,14 +6,15 @@ module stdp(
     input wire       pre_spike,
     input wire       post_spike,
     output wire      weight,
-    output reg [7:0] state
+    output reg [7:0] state,
+    output reg       spike_flag
 )
 
 // STDP parameters
-parameter max_weight = 127; // Max Synaptic weight
-parameter min_weight = 0; // Min Synaptic weight
-parameter alpha_pos = 2; // STDP positive learning rate
-parameter alpha_neg = 1; // STDP negative learning rate
+// parameter max_weight = 127; // Max Synaptic weight
+// parameter min_weight = 0; // Min Synaptic weight
+// parameter alpha_pos = 2; // STDP positive learning rate
+// parameter alpha_neg = 1; // STDP negative learning rate
 
 // standard values of STDP
 // tau_pos = 16.8ms
@@ -26,7 +27,7 @@ reg [7:0] weight_internal;
 
 
 always@(posedge clk) begin
-    
+    // if(!rst_n) 
 end
 
 
