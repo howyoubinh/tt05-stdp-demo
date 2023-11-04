@@ -24,14 +24,9 @@ reg [7:0] state_out1, state_out2; // 8-bit output state
 reg [7:0] time_diff_out, weight_out;
 reg w_flag_out;
 
-// reg [7:0] time_diff_out, w_flag_out
-
-
 // assignments
 assign in1 = ui_in;
 assign in2 = ui_in; // in2 = spike_1 * weight
-// assign in1 = {ui_in[7:4], 4'b0};
-// assign in2 = {ui_in[3:0], 4'b0};
 
 // stdp logic (including counter, stdp rule, and weight flag)
 stdp stdp1(.clk(clk), .rst_n(rst_n), .pre_spike(spike_out1), .post_spike(spike_out2), .time_diff(time_diff_out), .update_w_flag(w_flag_out), .weight(weight_out));
@@ -41,7 +36,6 @@ lif lif1(.current(in1), .clk(clk), .rst_n(rst_n), .spike(spike_out1), .state(sta
 
 // instantiate lif for postsynaptic neuron
 lif lif2(.current(in2), .clk(clk), .rst_n(rst_n), .spike(spike_out2), .state(state_out2));
-
 
 // assign outputs wires to output to lif2
 assign  uio_out[7] = spike_out2;

@@ -27,28 +27,21 @@ documentation:
   author:       "Binh Nguyen"      # Your name
   title:        "Spike-timing dependent plasticity (Verilog Demo)"      # Project title
   language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
-  description:  "Update neuron weight using pre-synaptic and post-synaptic spikes"      # Short description of what your project does
+  description:  "Update neuron weight using spike-timing dependent plasticity"      # Short description of what your project does
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
-      EDIT HERE
-      Uses a set of registers to divide the clock, and then some combinational logic
-      to convert from binary to decimal for the display.
+      
+      Uses a set of registers to implement a leaky integrate-and-fire (LIF) neuron for spike-timing dependent plasticity learning (STDP) rule.
+       Two LIF neurons are instantiated and a stdp module handles the logic for the timing and weight update.
 
-      Puts the bottom 8 bits of the counter on the bidirectional outputs.
-
-      With all the inputs set to 0, the internal 24 bit compare is set to 10,000,000. This means the
-      counter will increment by one each second.
-
-      If any inputs are non zero, then the input will be used as an bits 11 to 18 of the 24 bit compare register.
-      Example: setting the inputs to 00010000 will program 16384 into the compare register.
-      With a 10MHz clock the counter will increment ~610 times per second.
 
 # Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
   how_to_test: |
-      EDIT HERE
-      After reset, the counter should increase by one every second with a 10MHz input clock.
-      Experiment by changing the inputs to change the counting speed.
+      
+      After reset, a current is applied at different amplitudes and the input to the neuron is integrated at every clock cycle
+      If a pre-synaptic spike and post-synaptic spike occurs, time difference is measured and applied to the synatic weight update
+      for this connection.
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:               
