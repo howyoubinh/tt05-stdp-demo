@@ -15,9 +15,11 @@ module lif (
     always @(posedge clk) begin
         if (!rst_n) begin
             state <= 0;
-            threshold <= threshold_val;
+            // threshold <= 230;
+            thresohld <= threshold_val;
         end else begin
             state <= next_state;
+            // threshold <= threshold_val;
         end
     end
 
