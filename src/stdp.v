@@ -20,7 +20,6 @@ always @(posedge clk) begin
     if (!rst_n) begin // initialize variables
         pre_spike_time <= 8'b0;
         post_spike_time <= 8'b0;
-        weight_local <= 8'b1;
     end else begin
         pre_spike_time <= pre_spike ? 8'b0 : pre_spike_time + 1; // if spike is true, reset timer else increment timer
         post_spike_time <= post_spike ? 8'b0 : post_spike_time + 1;
