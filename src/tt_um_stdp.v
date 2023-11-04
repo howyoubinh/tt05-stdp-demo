@@ -26,11 +26,11 @@ reg w_flag_out;
 wire [7:0] threshold1, threshold2;
 
 // assignments
-assign in1 = ui_in;
-// assign in2 = ui_in;
+assign in1 = ui_in; // current driven by test.py
+assign in2 = ui_in;
 assign threshold1 = 230;
 assign threshold2 = 150;
-assign in2 = spike_out1 ? weight_out : 0; // in2 = spike_1 * weight
+// assign in2 = spike_out1 ? weight_out : 0; // in2 = spike_1 * weight (TO-DO)
 
 // stdp logic (including counter, stdp rule, and weight flag)
 stdp stdp1(.clk(clk), .rst_n(rst_n), .pre_spike(spike_out1), .post_spike(spike_out2), .time_diff(time_diff_out), .update_w_flag(w_flag_out), .weight(weight_out));
