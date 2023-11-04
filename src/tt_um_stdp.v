@@ -30,7 +30,7 @@ assign in1 = ui_in;
 // assign in2 = {ui_in[3:0], 4'b0};
 
 // stdp logic (including counter, stdp rule, and weight flag)
-stdp stdp1(.clk(clk), .rst_n(rst_n), .pre_spike(spike_out1), .post_spike(spike_out2), .time_diff(time_diff_out), .update_w_flag(w_flag_out), .weight(weight_out));
+// stdp stdp1(.clk(clk), .rst_n(rst_n), .pre_spike(spike_out1), .post_spike(spike_out2), .time_diff(time_diff_out), .update_w_flag(w_flag_out), .weight(weight_out));
 
 // instantiate lif for presynaptic neuron
 lif lif1(.current(in1), .clk(clk), .rst_n(rst_n), .spike(spike_out1), .state(state_out1));
