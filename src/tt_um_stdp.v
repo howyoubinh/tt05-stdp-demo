@@ -26,6 +26,7 @@ wire w_flag_out;
 
 // assignments
 assign in1 = ui_in;
+assign in2 = ui_in;
 // assign in1 = {ui_in[7:4], 4'b0};
 // assign in2 = {ui_in[3:0], 4'b0};
 
