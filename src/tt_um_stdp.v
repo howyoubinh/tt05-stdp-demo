@@ -21,12 +21,16 @@ wire [7:0] in1, in2; // 8-bit input wires
 // outs
 wire spike_out1, spike_out2; // 1-bit output spike
 reg [7:0] state_out1, state_out2; // 8-bit output state
-wire [7:0] time_diff_out, weight_out;
-wire w_flag_out;
+// wire [7:0] time_diff_out, weight_out;
+// wire w_flag_out;
+wire [7:0] weight_out;
+
+reg [7:0] time_diff_out, w_flag_out;
+
 
 // assignments
 assign in1 = ui_in;
-assign in2 = ui_in;
+assign in2 = ui_in; // in2 = spike_1 * weight
 // assign in1 = {ui_in[7:4], 4'b0};
 // assign in2 = {ui_in[3:0], 4'b0};
 
