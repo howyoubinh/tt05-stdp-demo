@@ -16,7 +16,7 @@ module lif (
         if (!rst_n) begin
             state <= 0;
             // threshold <= 230;
-            thresohld <= threshold_val;
+            threshold <= threshold_val;
         end else begin
             state <= next_state;
             // threshold <= threshold_val;
