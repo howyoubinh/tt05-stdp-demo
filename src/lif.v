@@ -5,7 +5,8 @@ module lif (
     input wire       clk,
     input wire       rst_n,
     output wire      spike,
-    output reg [7:0] state
+    output reg [7:0] state,
+    input wire [7:0] threshold_val
 );
     //local variables
     reg [7:0] threshold;
@@ -14,7 +15,7 @@ module lif (
     always @(posedge clk) begin
         if (!rst_n) begin
             state <= 0;
-            threshold <= 230;
+            threshold <= threshold_val;
         end else begin
             state <= next_state;
         end

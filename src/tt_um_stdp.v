@@ -33,10 +33,10 @@ assign in2 = ui_in;
 stdp stdp1(.clk(clk), .rst_n(rst_n), .pre_spike(spike_out1), .post_spike(spike_out2), .time_diff(time_diff_out), .update_w_flag(w_flag_out), .weight(weight_out));
 
 // instantiate lif for presynaptic neuron
-lif lif1(.current(in1), .clk(clk), .rst_n(rst_n), .spike(spike_out1), .state(state_out1));
+lif lif1(.current(in1), .clk(clk), .rst_n(rst_n), .spike(spike_out1), .state(state_out1), .threshold_val(230));
 
 // instantiate lif for postsynaptic neuron
-lif lif2(.current(in2), .clk(clk), .rst_n(rst_n), .spike(spike_out2), .state(state_out2));
+lif lif2(.current(in2), .clk(clk), .rst_n(rst_n), .spike(spike_out2), .state(state_out2), .threshold_val(150));
 
 // assign outputs wires to output to lif2
 assign  uio_out[7] = spike_out2;
