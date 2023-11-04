@@ -21,11 +21,10 @@ wire [7:0] in1, in2; // 8-bit input wires
 // outs
 wire spike_out1, spike_out2; // 1-bit output spike
 reg [7:0] state_out1, state_out2; // 8-bit output state
-// wire [7:0] time_diff_out, weight_out;
-// wire w_flag_out;
-wire [7:0] weight_out;
+reg [7:0] time_diff_out, weight_out;
+reg w_flag_out;
 
-reg [7:0] time_diff_out, w_flag_out;
+// reg [7:0] time_diff_out, w_flag_out
 
 
 // assignments

@@ -7,6 +7,7 @@ module lif (
     output wire      spike,
     output reg [7:0] state
 );
+    //local variables
     reg [7:0] threshold;
     wire [7:0] next_state;
 
@@ -20,10 +21,10 @@ module lif (
     end
 
 // next_state logic and spiking logic
-// spike if state >= threshold
+// if state >= threshold, spike = 1 else spike = 0
 assign spike = (state >= threshold); // spike if state > threshold
 
-// next_state = (0 or current) + (0 or decay)
+// if spike == 1, next_state = 0 else spike = current + decay (beta)
 assign next_state = (spike ? 0 : current) + (spike ? 0 : (state >> 1)+(state >> 2)+(state >> 3));
 
 endmodule
