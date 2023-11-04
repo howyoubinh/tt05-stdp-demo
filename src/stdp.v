@@ -5,8 +5,8 @@ module stdp (
     input wire       rst_n, // reset signal
     input wire       pre_spike, // pre-synaptic spike
     input wire       post_spike, // post-synaptic spike
-    output wire [7:0]time_diff, // 8-bit output time difference
-    output wire      update_w_flag, // 1 bit update flag
+    output reg [7:0]time_diff, // 8-bit output time difference
+    output reg      update_w_flag, // 1 bit update flag
     output wire [7:0]weight
 );
 
