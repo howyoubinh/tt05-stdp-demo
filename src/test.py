@@ -8,11 +8,11 @@ async def test_my_design(dut):
 
     # CONSTANT_CURRENT = 85
     # test different input currents
-    CHANGING_CURRENT = [0,10,24,48,64]
+    CHANGING_CURRENT = [0,10,20,30,40,50,60]
     
     dut._log.info("start simulation")
 
-    clock_cycles = 100
+    clock_cycles = 500
 
     # initialize clock
     clock = Clock(dut.clk, 1, units="ns")
@@ -26,7 +26,7 @@ async def test_my_design(dut):
     dut.ena.value = 1 # enable design
 
     for current in CHANGING_CURRENT:
-        for _ in range(clock_cycles):  # run 100 clock cycles for each current
+        for _ in range(clock_cycles):  # run 500 clock cycles for each current
             dut.ui_in.value = current
             await RisingEdge(dut.clk)
     
