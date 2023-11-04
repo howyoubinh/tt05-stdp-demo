@@ -5,9 +5,9 @@ module stdp (
     input wire       rst_n, // reset signal
     input wire       pre_spike, // pre-synaptic spike
     input wire       post_spike, // post-synaptic spike
-    output reg [15:0]time_diff, // 8-bit output time difference
+    output reg [7:0]time_diff, // 8-bit output time difference
     output reg      update_w_flag, // 1 bit update flag
-    output wire [15:0]weight
+    output wire [7:0]weight
 );
 
 // local variables
@@ -29,7 +29,7 @@ end
 // calculate time diff whenever time changes (only LTP)
 always @(posedge clk) begin
     if (!rst_n) begin
-        time_diff <= 16'b0;
+        time_diff <= 8'b0;
         update_w_flag <= 1'b0;
     end else begin
     time_diff <= post_spike_time - pre_spike_time; // assume pre comes before post (LTP)
@@ -40,7 +40,7 @@ end
 // LUT for weight update
 always @(posedge clk) begin
     if (!rst_n) begin
-        weight_local <= 16'b1;
+        weight_local <= 8'b1;
     end else begin
         case (update_w_flag)
             1'b1: weight_local <= (weight_local << 1); // weight * 2
