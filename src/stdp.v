@@ -22,7 +22,7 @@ always @(posedge clk) begin
         post_spike_time <= 16'b0;
     end else begin
         pre_spike_time <= pre_spike ? 16'b0 : pre_spike_time + 1; // if spike is true, reset timer else increment timer
-        post_spike_time <= post_spike ? 16'b0 : post_spike_time + 2;
+        post_spike_time <= post_spike ? 16'b0 : post_spike_time + 1;
     end
 end
 
