@@ -11,9 +11,9 @@ module stdp (
 );
 
 // local variables
-reg [7:0] pre_spike_time;
-reg [7:0] post_spike_time;
-reg [7:0] weight_local;
+reg [16:0] pre_spike_time;
+reg [16:0] post_spike_time;
+reg [16:0] weight_local;
 
 // increment pre_spike_time and post_spike_time
 always @(posedge clk) begin
