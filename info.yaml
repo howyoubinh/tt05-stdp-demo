@@ -8,10 +8,10 @@ project:
   source_files:
     # - tt_um_seven_segment_seconds.v
     # - decoder.v       
-    - tt_um_stdp.v
+    - tt_um_stdp2.v
     - lif.v
-    - stdp.v
-  top_module: "tt_um_stdp"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+    - stdp2.v
+  top_module: "tt_um_stdp2"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
 
 # How many tiles your design occupies? A single tile is about 167x108 uM.
   tiles: "1x1"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
@@ -56,14 +56,21 @@ documentation:
 
 # A description of what the outputs do (e.g. status LED, SPI MISO, etc)
   outputs:
-    - LIF state output
-    - Synaptic weight
+    - membrane potential bit a
+    - membrane potential bit b
+    - membrane potential bit c
+    - membrane potential bit d
+    - membrane potential bit e
+    - membrane potential bit f
+    - membrane potential bit g
+    - membrane potential bit h
+
 # A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
   bidirectional:
     - LIF spike output
 
 # The following fields are optional
-  tag:          "timer, test"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  tag:          "neuron, test"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
   external_hw:  ""      # Describe any external hardware needed
   discord:      "howyoubinh"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
   doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
