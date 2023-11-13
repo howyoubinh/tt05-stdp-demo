@@ -38,7 +38,7 @@ assign threshold_post = 200;
 // assign in2 = spike_out1 ? weight_out : 0; // in2 = spike_1 * weight (TO-DO)
 
 // stdp logic (including counter, stdp rule, and weight flag)
-stdp2 stdp(.clk(clk), .rst_n(rst_n), .pre_spike(spike_out1), .post_spike(spike_out2), .time_diff(time_diff_out), .update_w_flag(w_flag_out), .weight(weight_out));
+stdp2 stdp(.clk(clk), .rst_n(rst_n), .pre_spike(spike_pre), .post_spike(spike_post), .time_diff(time_diff_out), .update_w_flag(w_flag_out), .weight(weight_out));
 
 // instantiate 5 LIF for each presynaptic neuron
 lif lif_pre1(.current(in_pre), .clk(clk), .rst_n(rst_n), .spike(spike_pre[4]), .state(state_pre1), .threshold_val(threshold_pre1));

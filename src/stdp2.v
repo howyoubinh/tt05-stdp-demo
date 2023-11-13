@@ -3,7 +3,7 @@
 module stdp2 (
     input wire       clk, // clock signal
     input wire       rst_n, // reset signal
-    input wire       pre_spike, // pre-synaptic spike
+    input wire [4:0] pre_spike, // pre-synaptic spike
     input wire       post_spike, // post-synaptic spike
     output reg [7:0]time_diff, // 8-bit output time difference
     output reg      update_w_flag, // 1 bit update flag
