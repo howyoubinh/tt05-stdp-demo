@@ -51,7 +51,7 @@ lif lif_pre5(.current(in_pre), .clk(clk), .rst_n(rst_n), .spike(spike_pre[0]), .
 lif lif_post(.current(in_post), .clk(clk), .rst_n(rst_n), .spike(spike_post), .state(state_post), .threshold_val(threshold_post));
 
 // assign outputs wires to output to lif2
-assign  uio_out[7] = spike_out2;
-assign  uo_out = state_out2;
+assign  uio_out[7] = spike_post;
+assign  uo_out = state_post;
 
 endmodule
