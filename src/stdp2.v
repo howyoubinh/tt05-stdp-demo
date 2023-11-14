@@ -7,7 +7,7 @@ module stdp2 (
     input wire       post_spike, // post-synaptic spike
     output reg [4:0] time_diff_out, // 8-bit output time difference
     output reg       update_w_flag, // 1 bit update flag
-    output wire [4:0]weight
+    output wire [4:0]weight_out
 );
 
 // Number of presynaptic neurons
