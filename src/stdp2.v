@@ -55,7 +55,7 @@ always @(posedge clk) begin
 
         // calculate time diff and update weights
         for (int i = 0; i < NUM_PRE_NEURONS; i = i + 1) begin
-            time_diffs[i] <= post_spike_time - pre_spike_time[i];
+            time_diffs[i] <= post_spike_time - pre_spike_times[i];
             weights[i] <= calculate_weight(time_diffs[i]); // calculate_weight function takes time diff as input
         end
 
