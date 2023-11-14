@@ -67,8 +67,8 @@ always @(posedge clk) begin
 end
 
 // assign internal signals to output ports
-assign time_diff_out = time_diffs[0];
-assign weight_out = weights[0];
+assign time_diff = time_diffs[0];
+assign weight = weights[0];
 assign update_w_flag = update_w_flag_internal;
 
 function [7:0] calculate_weight;
