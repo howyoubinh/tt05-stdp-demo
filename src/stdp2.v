@@ -30,10 +30,12 @@ reg update_w_flag_internal;
 // increment pre_spike_time and post_spike_time
 always @(posedge clk) begin
     if (!rst_n) begin // initialize signals
-        pre_spike_times <= '0;
+        for (int i = 0; i < NUM_PRE_NEURONS; i = i + 1) begin
+            pre_spike_times[i] <= 8'b0;
+            time_diffs[i] <= 8'b0;
+            weights[i] <= 8'b0;
+        end
         post_spike_time <= 8'b0;
-        time_diffs <= '0;
-        weights <= '0;
         update_w_flag_internal <= 1'b0;
     end else begin
 
