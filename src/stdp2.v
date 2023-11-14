@@ -62,7 +62,7 @@ always @(posedge clk) begin
         end
 
         // check if weights need to be updated
-        update_w_flag_internal <= (|time_diffs); // check if any time_diffs are present
+        // update_w_flag_internal <= (|time_diffs); // check if any bits in time_diffs is set to 1
     end
 end
 
