@@ -15,8 +15,10 @@ module stdp2 (
 localparam NUM_PRE_NEURONS = 4;
 
 // internal signals to store spike times
-reg [7:0] pre_spike_times [0:NUM_PRE_NEURONS-1]; // 4 presynaptic neuron times
-reg [7:0] post_spike_time; // 1 postsynaptic neuron time
+// reg [7:0] pre_spike_times [0:NUM_PRE_NEURONS-1]; // 4 presynaptic neuron times
+// reg [7:0] post_spike_time; // 1 postsynaptic neuron time
+reg [3:0] pre_spike_times [0:NUM_PRE_NEURONS-1]; // 4 presynaptic neuron times
+reg [3:0] post_spike_time; // 1 postsynaptic neuron time
 
 // internal signal for time differences
 // reg [7:0] time_diffs [0:NUM_PRE_NEURONS-1]; // post - pre
@@ -41,19 +43,22 @@ end
 always @(posedge clk) begin
     if (!rst_n) begin // initialize signals
         for (int i = 0; i < NUM_PRE_NEURONS; i = i + 1) begin
-            pre_spike_times[i] <= 8'b0;
+            // pre_spike_times[i] <= 8'b0;
+            pre_spike_times[i] <= 4'b0;
             // time_diffs[i] <= 8'b0;
             time_diffs[i] <= 4'b0;
             weights[i] <= 4'b0;
         end
-        post_spike_time <= 8'b0;
+        // post_spike_time <= 8'b0;
+        post_spike_time <= 4'b0;
         update_w_flag_internal <= 1'b0;
     end else begin
 
         // update spikes for presynaptic neurons
         for (int i = 0; i < NUM_PRE_NEURONS; i = i + 1) begin
             if (pre_spike[i]) begin
-                pre_spike_times[i] <= 8'b0;
+                // pre_spike_times[i] <= 8'b0;
+                pre_spike_times[i] <= 4'b0;
             end else begin
                 pre_spike_times[i] = pre_spike_times[i] + 1; // increment presynaptic timer
             end
@@ -61,7 +66,8 @@ always @(posedge clk) begin
 
         // update spike time for postsynaptic neuron
         if (post_spike) begin
-            post_spike_time <= 8'b0;
+            // post_spike_time <= 8'b0;
+            post_spike_time <= 4'b0;
         end else begin
             post_spike_time = post_spike_time + 1; // increment postsynaptic timer
         end
@@ -80,7 +86,7 @@ end
 // assign internal signals to output ports
 
 assign time_diff = time_diffs[0];
-// assign weight[15:12] = weights[0];
+// assign weight[15:12] = weights[0]; // causing gds to fail
 // assign weight[11:8] = weights[1];
 // assign weight[7:4] = weights[2];
 // assign weight[3:0] = weights[3];
