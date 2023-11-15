@@ -62,7 +62,7 @@ lif lif_post(.current(in_post), .clk(clk), .rst_n(rst_n), .spike(spike_post), .s
 // lif_pre2 = weight[11:8]
 // lif_pre3 = weight[7:4]
 // lif_pre4 = weight[3:0]
-assign uo_out = weight_out[15:8]; // causing gds to fail
+assign uo_out = weight_out[15:8];
 assign uio_out = weight_out[7:0];
 
 endmodule
