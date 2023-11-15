@@ -6,7 +6,7 @@ module stdp2 (
     // input wire [4:0] pre_spike, // pre-synaptic spike
     input wire [3:0] pre_spike, // 4 bit pre-synaptic spike
     input wire       post_spike, // post-synaptic spike
-    output reg [7:0] time_diff, // 8-bit output time difference
+    output reg [16:0] time_diff, // 8-bit output time difference
     output reg       update_w_flag, // 1 bit update flag
     output wire [15:0]weight // 16 bit weight
 );
@@ -45,7 +45,7 @@ always @(posedge clk) begin
         for (int i = 0; i < NUM_PRE_NEURONS; i = i + 1) begin
             // pre_spike_times[i] <= 8'b0;
             pre_spike_times[i] <= 4'b0;
-            // time_diffs[i] <= 8'b0;
+            // time_diffs[i] <= 8'b0;7
             time_diffs[i] <= 4'b0;
             weights[i] <= 4'b0;
         end
@@ -75,7 +75,7 @@ always @(posedge clk) begin
         // calculate time diff and update weights
         for (int i = 0; i < NUM_PRE_NEURONS; i = i + 1) begin
             // time_diffs[i] <= post_spike_time - pre_spike_times[i]; // this is failing gds
-            time_diffs[i] <= pre_spike_times[i]; // test this out
+            time_diffs[i] <= pre_spike_times[i]; // this works
 
             // if (time_diffs[i] < 0) begin
             //     time_diffs[i] = 4'b0; // clamp lower bound to 0
@@ -93,8 +93,11 @@ end
 
 // assign internal signals to output ports
 
-assign time_diff = time_diffs[0];
-assign weight[15:12] = weights[0]; // causing gds to fail
+assign time_diff[15:12] = time_diffs[0];
+assign time_diff[11:8] = time_diffs[1];
+assign time_diff[7:4] = time_diffs[2];
+assign time_diff[3:0] = time_diffs[3];
+assign weight[15:12] = weights[0];
 assign weight[11:8] = weights[1];
 assign weight[7:4] = weights[2];
 assign weight[3:0] = weights[3];
