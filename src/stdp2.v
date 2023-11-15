@@ -6,7 +6,7 @@ module stdp2 (
     // input wire [4:0] pre_spike, // pre-synaptic spike
     input wire [3:0] pre_spike, // 4 bit pre-synaptic spike
     input wire       post_spike, // post-synaptic spike
-    output reg [16:0] time_diff, // 8-bit output time difference
+    output reg [15:0] time_diff, // 8-bit output time difference
     output reg       update_w_flag, // 1 bit update flag
     output wire [15:0]weight // 16 bit weight
 );
