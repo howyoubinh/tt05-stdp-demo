@@ -13,7 +13,7 @@ module tt_um_stdp2 (
 
 // use bidirectionals as outputs
 assign uio_oe = 8'b11111111; // 1 = enable
-// assign uio_out[6:0] = 6'd0; // set unused bits to 0
+assign uio_out[6:0] = 6'd0; // set unused bits to 0
 
 // in
 wire [7:0] in_pre, in_post; // 8-bit input wires
@@ -54,15 +54,15 @@ lif lif_pre4(.current(in_pre), .clk(clk), .rst_n(rst_n), .spike(spike_pre[0]), .
 lif lif_post(.current(in_post), .clk(clk), .rst_n(rst_n), .spike(spike_post), .state(state_post), .threshold_val(threshold_post));
 
 // assign outputs wires to output to lif2
-// assign  uio_out[7] = spike_post;
-// assign  uo_out = state_post;
+assign  uio_out[7] = spike_post;
+assign  uo_out = state_post;
 
 // wire outputs with 4 bit weights for each of the 4 presynaptic neurons
 // lif_pre1 = weight[15:12]
 // lif_pre2 = weight[11:8]
 // lif_pre3 = weight[7:4]
 // lif_pre4 = weight[3:0]
-assign uo_out = weight_out[15:8];
-assign uio_out = weight_out[7:0];
+// assign uo_out = weight_out[15:8];
+// assign uio_out = weight_out[7:0];
 
 endmodule

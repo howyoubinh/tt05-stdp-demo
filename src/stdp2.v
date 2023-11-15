@@ -23,16 +23,17 @@ reg [7:0] time_diffs [0:NUM_PRE_NEURONS-1]; // post - pre
 
 // internal signals for weights
 reg [3:0] weights [0:NUM_PRE_NEURONS-1]; // 4 bit weights
+// wire [3:0] weights [0:NUM_PRE_NEURONS-1]; // 4 bit weights
 
 // internal signal for weight update flag
 reg update_w_flag_internal;
 
-// initial begin
-//     // dump array word
-//     for (int i = 0; i < NUM_PRE_NEURONS; i = i + 1) begin
-//         $dumpvars(0, pre_spike_times[i]);
-//     end
-// end
+initial begin
+    // dump array word
+    for (int i = 0; i < NUM_PRE_NEURONS; i = i + 1) begin
+        $dumpvars(0, pre_spike_times[i]);
+    end
+end
 
 
 // increment pre_spike_time and post_spike_time
