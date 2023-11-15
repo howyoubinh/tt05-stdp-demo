@@ -75,8 +75,8 @@ always @(posedge clk) begin
         // calculate time diff and update weights
         for (int i = 0; i < NUM_PRE_NEURONS; i = i + 1) begin
             time_diffs[i] <= post_spike_time - pre_spike_times[i];
-            weights[i] <= 4'b0; // see if this works with 0's
-            // weights[i] <= calculate_weight(time_diffs[i]); // calculate_weight function takes time diff as input
+            // weights[i] <= 4'b0; // see if this works with 0's
+            weights[i] <= calculate_weight(time_diffs[i]); // calculate_weight function takes time diff as input
         end
 
         // check if weights need to be updated
@@ -110,8 +110,8 @@ assign update_w_flag = update_w_flag_internal;
 //     end
 // endfunction
 
-function [4:0] calculate_weight;
-    input [4:0] time_diff;
+function [3:0] calculate_weight;
+    input [3:0] time_diff;
     begin
         // positive time_diff = LTP 
         
