@@ -86,14 +86,14 @@ end
 // assign internal signals to output ports
 
 assign time_diff = time_diffs[0];
-// assign weight[15:12] = weights[0]; // causing gds to fail
-// assign weight[11:8] = weights[1];
-// assign weight[7:4] = weights[2];
-// assign weight[3:0] = weights[3];
-assign weight[15:12] = 4'b0;
-assign weight[11:8] = 4'b0;
-assign weight[7:4] = 4'b0;
-assign weight[3:0] = 4'b0;
+assign weight[15:12] = weights[0]; // causing gds to fail
+assign weight[11:8] = weights[1];
+assign weight[7:4] = weights[2];
+assign weight[3:0] = weights[3];
+// assign weight[15:12] = 4'b0;
+// assign weight[11:8] = 4'b0;
+// assign weight[7:4] = 4'b0;
+// assign weight[3:0] = 4'b0;
 // assign weight = weights[0];
 assign update_w_flag = update_w_flag_internal;
 
