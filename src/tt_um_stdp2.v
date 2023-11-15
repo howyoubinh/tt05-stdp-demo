@@ -23,7 +23,7 @@ wire [7:0] in_pre, in_post; // 8-bit input wires
 wire [3:0]spike_pre; // 4 bit spike vector (1 for each presynaptic neuron)
 wire      spike_post; // 1-bit output spike
 reg [7:0] state_pre1, state_pre2, state_pre3, state_pre4, state_pre5, state_post; // 8-bit output state
-reg [7:0] time_diff_out;
+reg [15:0] time_diff_out;
 // reg [7:0] weight_out;
 wire [15:0] weight_out; // 4x4bit weights
 reg       w_flag_out;
