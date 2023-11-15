@@ -19,7 +19,8 @@ reg [7:0] pre_spike_times [0:NUM_PRE_NEURONS-1]; // 4 presynaptic neuron times
 reg [7:0] post_spike_time; // 1 postsynaptic neuron time
 
 // internal signal for time differences
-reg [7:0] time_diffs [0:NUM_PRE_NEURONS-1]; // post - pre
+// reg [7:0] time_diffs [0:NUM_PRE_NEURONS-1]; // post - pre
+reg [3:0] time_diffs [0:NUM_PRE_NEURONS-1]; // post - pre
 
 // internal signals for weights
 reg [3:0] weights [0:NUM_PRE_NEURONS-1]; // 4 bit weights
@@ -41,7 +42,8 @@ always @(posedge clk) begin
     if (!rst_n) begin // initialize signals
         for (int i = 0; i < NUM_PRE_NEURONS; i = i + 1) begin
             pre_spike_times[i] <= 8'b0;
-            time_diffs[i] <= 8'b0;
+            // time_diffs[i] <= 8'b0;
+            time_diffs[i] <= 4'b0;
             weights[i] <= 4'b0;
         end
         post_spike_time <= 8'b0;
@@ -85,8 +87,20 @@ assign time_diff = time_diffs[0];
 assign weight = weights[0];
 assign update_w_flag = update_w_flag_internal;
 
-function [7:0] calculate_weight;
-    input [7:0] time_diff;
+// function [7:0] calculate_weight;
+//     input [7:0] time_diff;
+//     begin
+//         // positive time_diff = LTP 
+        
+//         // negative time_diff = LTD
+
+//         // placeholder for calculate_weight
+//         calculate_weight = time_diff; // weight directly proportional to time difference
+//     end
+// endfunction
+
+function [4:0] calculate_weight;
+    input [4:0] time_diff;
     begin
         // positive time_diff = LTP 
         
