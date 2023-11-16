@@ -3,7 +3,6 @@
 module stdp2 (
     input wire       clk, // clock signal
     input wire       rst_n, // reset signal
-    // input wire [4:0] pre_spike, // pre-synaptic spike
     input wire [3:0] pre_spike, // 4 bit pre-synaptic spike
     input wire       post_spike, // post-synaptic spike
     output reg [15:0] time_diff, // 8-bit output time difference
@@ -15,18 +14,14 @@ module stdp2 (
 localparam NUM_PRE_NEURONS = 4;
 
 // internal signals to store spike times
-// reg [7:0] pre_spike_times [0:NUM_PRE_NEURONS-1]; // 4 presynaptic neuron times
-// reg [7:0] post_spike_time; // 1 postsynaptic neuron time
 reg [3:0] pre_spike_times [0:NUM_PRE_NEURONS-1]; // 4 presynaptic neuron times
 reg [3:0] post_spike_time; // 1 postsynaptic neuron time
 
 // internal signal for time differences
-// reg [7:0] time_diffs [0:NUM_PRE_NEURONS-1]; // post - pre
 reg [3:0] time_diffs [0:NUM_PRE_NEURONS-1]; // post - pre
 
 // internal signals for weights
 reg [3:0] weights [0:NUM_PRE_NEURONS-1]; // 4 bit weights
-// wire [3:0] weights [0:NUM_PRE_NEURONS-1]; // 4 bit weights
 
 // internal signal for weight update flag
 reg update_w_flag_internal;
@@ -75,21 +70,13 @@ always @(posedge clk) begin
         // calculate time diff and update weights
         for (int i = 0; i < NUM_PRE_NEURONS; i = i + 1) begin
             // time_diffs[i] <= (post_spike_time - pre_spike_times[i] > 0) ? 4'b1 : 4'b0; // failing gds
-            // time_diffs[i] <= post_spike_time - pre_spike_times[i]; // this is failing gds
-            // time_diffs[i] <= pre_spike_times[i]; // this works
-            time_diffs[i] <= 4'b0;
-
-            // if (time_diffs[i] < 0) begin
-            //     time_diffs[i] = 4'b0; // clamp lower bound to 0
-            // end
-            // weights[i] <= 4'b0; // this works
-            // weights[i] <= calculate_weight(4'b1111); // this works
-            // weights[i] <= calculate_weight(4'b0); // this works
+            // time_diffs[i] <= post_spike_time - pre_spike_times[i]; // failing gds
+            time_diffs[i] <= pre_spike_times[i]; // this works
             weights[i] <= calculate_weight(time_diffs[i]); // calculate_weight function takes time diff as input
         end
 
         // check if weights need to be updated
-        // update_w_flag_internal <= (|time_diffs); // check if any bits in time_diffs is set to 1
+        update_w_flag_internal <= (|time_diffs); // check if any bits in time_diffs is set to 1
     end
 end
 
@@ -108,7 +95,7 @@ assign update_w_flag = update_w_flag_internal;
 function [3:0] calculate_weight;
     input [3:0] time_diff;
     begin
-        // positive time_diff = LTP 
+        // positive time_diff = LTP
         
         // negative time_diff = LTD
 
