@@ -74,9 +74,9 @@ always @(posedge clk) begin
 
         // calculate time diff and update weights
         for (int i = 0; i < NUM_PRE_NEURONS; i = i + 1) begin
-            time_diffs[i] <= (post_spike_time - pre_spike_times[i] > 0) ? 4'b1 : 4'b0;
+            // time_diffs[i] <= (post_spike_time - pre_spike_times[i] > 0) ? 4'b1 : 4'b0; // failing gds
             // time_diffs[i] <= post_spike_time - pre_spike_times[i]; // this is failing gds
-            // time_diffs[i] <= pre_spike_times[i]; // this works
+            time_diffs[i] <= pre_spike_times[i]; // this works
 
             // if (time_diffs[i] < 0) begin
             //     time_diffs[i] = 4'b0; // clamp lower bound to 0
