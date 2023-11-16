@@ -44,10 +44,10 @@ assign threshold_post = 200;
 stdp2 stdp(.clk(clk), .rst_n(rst_n), .pre_spike(spike_pre), .post_spike(spike_post), .time_diff(time_diff_out), .update_w_flag(w_flag_out), .weight(weight_out));
 
 // instantiate 5 LIF for each presynaptic neuron
-lif lif_pre1(.current(in_pre), .clk(clk), .rst_n(rst_n), .spike(spike_pre[3]), .state(state_pre1), .threshold_val(threshold_pre1));
-lif lif_pre2(.current(in_pre), .clk(clk), .rst_n(rst_n), .spike(spike_pre[2]), .state(state_pre2), .threshold_val(threshold_pre2));
-lif lif_pre3(.current(in_pre), .clk(clk), .rst_n(rst_n), .spike(spike_pre[1]), .state(state_pre3), .threshold_val(threshold_pre3));
-lif lif_pre4(.current(in_pre), .clk(clk), .rst_n(rst_n), .spike(spike_pre[0]), .state(state_pre4), .threshold_val(threshold_pre4));
+lif lif_pre1(.current(in_pre), .clk(clk), .rst_n(rst_n), .spike(spike_pre[0]), .state(state_pre1), .threshold_val(threshold_pre1));
+lif lif_pre2(.current(in_pre), .clk(clk), .rst_n(rst_n), .spike(spike_pre[1]), .state(state_pre2), .threshold_val(threshold_pre2));
+lif lif_pre3(.current(in_pre), .clk(clk), .rst_n(rst_n), .spike(spike_pre[2]), .state(state_pre3), .threshold_val(threshold_pre3));
+lif lif_pre4(.current(in_pre), .clk(clk), .rst_n(rst_n), .spike(spike_pre[3]), .state(state_pre4), .threshold_val(threshold_pre4));
 // lif lif_pre5(.current(in_pre), .clk(clk), .rst_n(rst_n), .spike(spike_pre[0]), .state(state_pre5), .threshold_val(threshold_pre5));
 
 // instantiate 1 LIF for postsynaptic neuron
