@@ -60,7 +60,7 @@ always @(posedge clk) begin
                 // pre_spike_times[i] <= 8'b0;
                 pre_spike_times[i] <= 4'b0;
             end else begin
-                pre_spike_times[i] = pre_spike_times[i] + 1; // increment presynaptic timer
+                pre_spike_times[i] = pre_spike_times[i] + 1'b1; // increment presynaptic timer
             end
         end
 
@@ -69,7 +69,7 @@ always @(posedge clk) begin
             // post_spike_time <= 8'b0;
             post_spike_time <= 4'b0;
         end else begin
-            post_spike_time = post_spike_time + 1; // increment postsynaptic timer
+            post_spike_time = post_spike_time + 1'b1; // increment postsynaptic timer
         end
 
         // calculate time diff and update weights
