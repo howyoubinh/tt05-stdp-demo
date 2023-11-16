@@ -67,14 +67,14 @@ documentation:
 
 # A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
   bidirectional:
-    - weight bit i
-    - weight bit j
-    - weight bit k
-    - weight bit l
-    - weight bit m
-    - weight bit n
-    - weight bit o
-    - weight bit p
+    - weight output bit i
+    - weight output bit j
+    - weight output bit k
+    - weight output bit l
+    - weight output bit m
+    - weight output bit n
+    - weight output bit o
+    - weight output bit p
 
 # The following fields are optional
   tag:          "neuron, neurmorphic, brain-inspiried, stdp"      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,

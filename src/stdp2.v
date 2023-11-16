@@ -31,12 +31,12 @@ reg [3:0] weights [0:NUM_PRE_NEURONS-1]; // 4 bit weights
 // internal signal for weight update flag
 reg update_w_flag_internal;
 
-initial begin
-    // dump array word
-    for (int i = 0; i < NUM_PRE_NEURONS; i = i + 1) begin
-        $dumpvars(0, pre_spike_times[i]);
-    end
-end
+// initial begin
+//     // dump array word
+//     for (int i = 0; i < NUM_PRE_NEURONS; i = i + 1) begin
+//         $dumpvars(0, pre_spike_times[i]);
+//     end
+// end
 
 
 // increment pre_spike_time and post_spike_time
@@ -76,7 +76,8 @@ always @(posedge clk) begin
         for (int i = 0; i < NUM_PRE_NEURONS; i = i + 1) begin
             // time_diffs[i] <= (post_spike_time - pre_spike_times[i] > 0) ? 4'b1 : 4'b0; // failing gds
             // time_diffs[i] <= post_spike_time - pre_spike_times[i]; // this is failing gds
-            time_diffs[i] <= pre_spike_times[i]; // this works
+            // time_diffs[i] <= pre_spike_times[i]; // this works
+            time_diffs[i] <= 4'b0;
 
             // if (time_diffs[i] < 0) begin
             //     time_diffs[i] = 4'b0; // clamp lower bound to 0
